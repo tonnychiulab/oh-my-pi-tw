@@ -62,38 +62,38 @@ export function getExtraHelpText(): string {
   ANTHROPIC_SEARCH_BASE_URL  - Anthropic web search base URL (override; pairs with ANTHROPIC_SEARCH_API_KEY)
   TYPESAFE_API_KEY           - TypeSafe System One judgments (auto thinking, unexpected-stop, AI staging, eval judge())
 
-  ${chalk.dim("# Configuration")}
-  OMP_PROFILE                 - Named profile for isolated agent state (same as --profile)
-  Use \`omp --profile <name> --alias <command>\` to create a shell shortcut for a profile
-  PI_CODING_AGENT_DIR        - Session storage directory (default: ~/${CONFIG_DIR_NAME}/agent)
-  PI_PACKAGE_DIR             - Override package directory (for Nix/Guix store paths)
-  PI_SMOL_MODEL              - Override smol/fast model (see --smol)
-  PI_SLOW_MODEL              - Override slow/reasoning model (see --slow)
-  PI_PLAN_MODEL              - Override planning model (see --plan)
-  PI_NO_PTY                  - Disable PTY-based interactive bash execution
-  For complete environment variable reference, see:
+  ${chalk.dim("# 環境與目錄配置 (Configuration)")}
+  OMP_PROFILE                 - 指定隔離 Agent 狀態的命名 Profile（等同於 --profile）
+  使用 \`omp --profile <名稱> --alias <指令>\` 為指定的 Profile 建立 Shell 快捷指令
+  PI_CODING_AGENT_DIR        - Session 歷史儲存目錄（預設：~/${CONFIG_DIR_NAME}/agent）
+  PI_PACKAGE_DIR             - 覆寫套件安裝目錄（適用於 Nix/Guix 存放路徑）
+  PI_SMOL_MODEL              - 覆寫輕量/快速任務的 Smol Model（參閱 --smol）
+  PI_SLOW_MODEL              - 覆寫深度推理解析的 Slow Model（參閱 --slow）
+  PI_PLAN_MODEL              - 覆寫架構規劃專用的 Plan Model（參閱 --plan）
+  PI_NO_PTY                  - 停用基於 PTY 的互動式 Bash 執行環境
+  完整環境變數參考文件請參閱：
   ${chalk.dim("docs/environment-variables.md")}
-${chalk.bold("Available Tools (default-enabled unless noted):")}
-  read          - Read file contents
-  bash          - Execute bash commands
-  edit          - Edit files with find/replace
-  write         - Write files (creates/overwrites)
-  grep          - Search file contents
-  glob          - Find files by glob pattern
-  lsp           - Language server protocol (code intelligence)
-  python        - Execute Python code (requires: ${APP_NAME} setup python)
-  notebook      - Edit Jupyter notebooks
-  browser       - Browser automation (Puppeteer)
-  computer      - Native host desktop capture and input (disabled by default)
-  task          - Launch sub-agents for parallel tasks
-  todo          - Manage todo/task lists
-  web_search    - Search the web
-  ask           - Ask user questions (interactive mode only)
+${chalk.bold("內建可用工具 (Available Tools，預設全啟用):")}
+  read          - 讀取檔案內容
+  bash          - 執行 Bash 指令
+  edit          - 透過搜尋/取代編輯檔案
+  write         - 寫入檔案（新建或覆寫）
+  grep          - 搜尋檔案內容文字
+  glob          - 透過萬用字元 (Glob) 搜尋比對檔案路徑
+  lsp           - 語言伺服器協定 LSP（程式碼智慧感知與跳轉）
+  python        - 執行 Python 程式碼（需要：${APP_NAME} setup python）
+  notebook      - 檢視與編輯 Jupyter Notebook 筆記本
+  browser       - 瀏覽器自動化操作 (Puppeteer)
+  computer      - 本地主機桌面截圖與鍵鼠操作（預設停用）
+  task          - 啟動 Sub-agents 執行平行分散任務
+  todo          - 管理待辦事項清單 (Todo / Task lists)
+  web_search    - 執行網路搜尋
+  ask           - 向使用者發出互動式提問（僅限互動模式）
 
-${chalk.bold("Plugin Options:")}
-  --plugin-dir <path>        Load plugin from directory (repeatable)
+${chalk.bold("外掛選項 (Plugin Options):")}
+  --plugin-dir <路徑>        從指定目錄載入 Plugin（可重複指定）
 
-${chalk.bold("Useful Commands:")}
-  omp agents unpack           - Export bundled subagents to ~/.omp/agent/agents (default)
-  omp agents unpack --project - Export bundled subagents to ./.omp/agents`;
+${chalk.bold("常用輔助指令 (Useful Commands):")}
+  omp agents unpack           - 匯出內建的 Subagents 至 ~/.omp/agent/agents（預設目錄）
+  omp agents unpack --project - 匯出內建的 Subagents 至目前專案的 ./.omp/agents 目錄`;
 }

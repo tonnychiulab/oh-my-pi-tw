@@ -391,7 +391,7 @@ function renderCommandBody(lines: string[], command: CommandMetadata): void {
 
 	// Examples
 	if (command.examples && command.examples.length > 0) {
-		lines.push("EXAMPLES");
+		lines.push("範例說明 (EXAMPLES)");
 		for (const ex of command.examples) {
 			for (const line of ex.split("\n")) {
 				lines.push(`  ${line}`);
@@ -471,7 +471,7 @@ export async function run(opts: RunOptions): Promise<void> {
 			const Cmd = await loadEntry(entry);
 			renderCommandHelp(bin, entry.name, Cmd);
 		} else {
-			process.stderr.write(`Unknown command: ${commandId}\n`);
+			process.stderr.write(`錯誤：未知的指令 ${commandId}\n`);
 		}
 		return;
 	}
@@ -480,7 +480,7 @@ export async function run(opts: RunOptions): Promise<void> {
 	const entry = findEntry(opts.commands, commandId);
 
 	if (!entry) {
-		process.stderr.write(`Error: command ${commandId} not found\n`);
+		process.stderr.write(`錯誤：找不到指令 ${commandId}\n`);
 		process.exitCode = 1;
 		return;
 	}
@@ -496,9 +496,9 @@ export async function run(opts: RunOptions): Promise<void> {
 		// process-level catch would dump a minified `dist/cli.js` code frame over a
 		// plain argument error (issue #5369).
 		if (error instanceof CliUsageError) {
-			process.stderr.write(`error: ${error.message}\n\n`);
-			process.stderr.write(`USAGE\n  ${commandUsageLine(bin, entry.name, Cmd)}\n`);
-			process.stderr.write(`\nRun \`${bin} ${entry.name} --help\` for details.\n`);
+			process.stderr.write(`錯誤: ${error.message}\n\n`);
+			process.stderr.write(`使用方式 (USAGE)\n  ${commandUsageLine(bin, entry.name, Cmd)}\n`);
+			process.stderr.write(`\n執行 \`${bin} ${entry.name} --help\` 檢視完整參數說明。\n`);
 			process.exitCode = 1;
 			return;
 		}

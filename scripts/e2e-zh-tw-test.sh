@@ -118,6 +118,18 @@ else
     report_fail "Flag 正體中文說明測試失敗" "指定使用的 Model" "$HELP_OUTPUT"
 fi
 
+if echo "$HELP_OUTPUT" | grep -q "恢復指定的 Session"; then
+    report_pass "核心 Flag (--restore) 成功顯示正體中文說明"
+else
+    report_fail "Flag (--restore) 正體中文說明測試失敗" "恢復指定的 Session" "$HELP_OUTPUT"
+fi
+
+if echo "$HELP_OUTPUT" | grep -q "內建可用工具" && echo "$HELP_OUTPUT" | grep -q "常用輔助指令"; then
+    report_pass "Help 輔助區塊 (內建可用工具 / 常用輔助指令) 成功顯示正體中文"
+else
+    report_fail "Help 輔助區塊測試失敗" "內建可用工具 / 常用輔助指令" "$HELP_OUTPUT"
+fi
+
 # ------------------------------------------------------------------------------
 # 結算報告
 # ------------------------------------------------------------------------------

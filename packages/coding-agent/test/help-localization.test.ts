@@ -15,6 +15,10 @@ describe("help-localization (CLI 參數與指令說明正體中文本地化)", (
 			expect(localizeFlagDescription("profile")).toContain("Profile");
 			expect(localizeFlagDescription("cwd")).toContain("指定啟動的工作目錄");
 			expect(localizeFlagDescription("yolo")).toContain("YOLO 模式");
+			expect(localizeFlagDescription("restore")).toContain("恢復指定的 Session");
+			expect(localizeFlagDescription("from-claude")).toContain("Claude Code");
+			expect(localizeFlagDescription("from-codex")).toContain("Codex");
+			expect(localizeFlagDescription("approval-mode")).toContain("核准模式");
 		});
 
 		it("未定義之未知參數安全 fallback 原描述", () => {

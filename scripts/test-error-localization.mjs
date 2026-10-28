@@ -114,4 +114,13 @@ assert.equal(localizeWarning(""), "");
 assert.equal(localizeWarning("Session name cannot be empty."), "Session 名稱不能為空。");
 console.log("✔ 測試通過：安全降級 Fallback 機制");
 
-console.log("\n 全部 8 組測試項目 100% 通過！");
+// 9. Help 參數正體中文轉譯測試
+import { localizeFlagDescription, localizeCommandDescription } from "../packages/coding-agent/src/utils/help-localization.ts";
+assert.ok(localizeFlagDescription("restore")?.includes("恢復指定的 Session"), "restore 參數應正確轉譯為正體中文");
+assert.ok(localizeFlagDescription("from-claude")?.includes("Claude Code"), "from-claude 參數應正確轉譯");
+assert.ok(localizeFlagDescription("approval-mode")?.includes("核准模式"), "approval-mode 參數應正確轉譯");
+assert.ok(localizeCommandDescription("auth")?.includes("身分認證"), "auth 指令應正確轉譯");
+assert.ok(localizeCommandDescription("worktree")?.includes("工作樹"), "worktree 指令應正確轉譯");
+console.log("✔ 測試通過：Help 參數與子指令正體中文轉譯 (包含 --restore)");
+
+console.log("\n 全部 9 組測試項目 100% 通過！");
