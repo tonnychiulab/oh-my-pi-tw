@@ -93,11 +93,29 @@ fi
 # ------------------------------------------------------------------------------
 # 測試 5: Bun 原生單元測試套件
 # ------------------------------------------------------------------------------
-echo -e "\n${YELLOW}▶ 測試 5: Bun 原生單元測試套件 (packages/coding-agent/test)${NC}"
-if bun test packages/coding-agent/test/error-localization.test.ts > /dev/null 2>&1; then
-    report_pass "13 個情境與 30 個 expect 斷言全部通過"
+echo -e "\n${YELLOW}▶ 測試 5: Bun 原生單元測試套件 (error & help localization)${NC}"
+if bun test packages/coding-agent/test/error-localization.test.ts packages/coding-agent/test/help-localization.test.ts > /dev/null 2>&1; then
+    report_pass "16 個情境與 40+ 個 expect 斷言全部通過"
 else
-    report_fail "Bun test 未通過" "13 pass" "請執行 bun test 檢視詳細錯誤"
+    report_fail "Bun test 未通過" "pass" "請執行 bun test 檢視詳細錯誤"
+fi
+
+# ------------------------------------------------------------------------------
+# 測試 6: omp --help 參數正體中文說明檢驗
+# ------------------------------------------------------------------------------
+echo -e "\n${YELLOW}▶ 測試 6: omp --help 參數與章節正體中文檢視${NC}"
+HELP_OUTPUT=$($OMP_CMD --help 2>&1 || true)
+
+if echo "$HELP_OUTPUT" | grep -q "使用方式 (USAGE)" && echo "$HELP_OUTPUT" | grep -q "旗標選項 (FLAGS)"; then
+    report_pass "Help 章節標題成功顯示正體中文 (使用方式 / 旗標選項)"
+else
+    report_fail "Help 章節標題測試失敗" "使用方式 (USAGE)" "$HELP_OUTPUT"
+fi
+
+if echo "$HELP_OUTPUT" | grep -q "指定使用的 Model"; then
+    report_pass "核心 Flag (--model) 成功顯示正體中文說明"
+else
+    report_fail "Flag 正體中文說明測試失敗" "指定使用的 Model" "$HELP_OUTPUT"
 fi
 
 # ------------------------------------------------------------------------------
