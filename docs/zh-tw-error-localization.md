@@ -20,7 +20,7 @@
 ## 🎯 需求背景與核心挑戰
 
 ### 1. 痛點
-`oh-my-pi`（omp）為具備深度 IDE 整合的強大 AI Coding Agent（約 8 萬行 Rust 核心 + 數十萬行 TypeScript）。全專案有上千處硬編碼英文錯誤（如 `throw new Error(...)`、`chalk.red("Error: ...")`），對台灣繁體中文開發者在操作 CLI 或閱讀 TUI 報錯時不夠直覺親切。
+`oh-my-pi`（omp）為具備深度 IDE 整合的強大 AI Coding Agent（約 8 萬行 Rust 核心 + 數十萬行 TypeScript）。全專案有上千處硬編碼英文錯誤（如 `throw new Error(...)`、`chalk.red("Error: ...")`）。本功能的誕生源自文組同事與客戶的強烈許願——在操作 CLI 或閱讀 TUI 報錯時常常被滿屏的長串英文嚇退，希望能有親切、清楚易懂的正體中文提示，同時保留核心技術名詞方便查閱。
 
 ### 2. 核心約束
 * **正體中文呈現**：終端機與 TUI 錯誤橫幅必須為自然通順的台灣正體中文。

@@ -30,7 +30,7 @@ The most capable agent surface that ships. Continuously tuned by real-world use 
 
 ## 🇹🇼 繁體中文特裝版亮點 (Traditional Chinese Error Localization)
 
-`oh-my-pi-tw` 提供針對台灣開發者量身打造的**正體中文錯誤檢視體驗**，並嚴格遵循「專業術語（`Worktree`, `AST`, `Token`, `MCP`, `Session`, `Plan`...）與品牌（`Git`, `Bun`, `Claude`, `OpenAI`...）保留不翻」原則，維持與官方上游（`can1357/oh-my-pi`）零衝突的長治久安架構：
+`oh-my-pi-tw` 源自文組同事與客戶的強烈敲碗與真實需求——提供更親切、不被滿屏英文嚇到的**正體中文錯誤檢視體驗**，同時嚴格遵循「專業術語（`Worktree`, `AST`, `Token`, `MCP`, `Session`, `Plan`...）與品牌（`Git`, `Bun`, `Claude`, `OpenAI`...）保留不翻」原則，維持與官方上游（`can1357/oh-my-pi`）零衝突的長治久安架構：
 
 <p align="center">
   <img src="assets/zh-tw-cli-demo.png" width="860" alt="oh-my-pi-tw CLI 正體中文錯誤檢視">
