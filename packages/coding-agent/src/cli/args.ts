@@ -18,6 +18,7 @@ import {
 } from "./flag-tables";
 import { getExtraHelpText } from "./help-extra";
 import { CliUsageError } from "./usage-error";
+import { localizeError } from "../utils/error-localization";
 
 export { getExtraHelpText };
 
@@ -497,8 +498,9 @@ export function reportUnrecognizedFlags(
 	if (args.unrecognizedFlags.length === 0) return false;
 	const flags = args.unrecognizedFlags;
 	const plural = flags.length === 1 ? "" : "s";
-	write(`${chalk.red(`Error: unknown flag${plural}: ${flags.join(", ")}`)}\n`);
-	write(`Run \`${APP_NAME} --help\` for available flags.\n`);
+	const localized = localizeError(`unknown flag${plural}: ${flags.join(", ")}`);
+	write(`${chalk.red(`錯誤: ${localized}`)}\n`);
+	write(`請執行 \`${APP_NAME} --help\` 檢視可用參數。\n`);
 	return true;
 }
 
@@ -512,7 +514,9 @@ export function reportInvalidFlagValues(
 	args: Pick<Args, "invalidFlagValues">,
 	write: (text: string) => void = text => process.stderr.write(text),
 ): boolean {
-	for (const message of args.invalidFlagValues) write(`${chalk.red(`Error: ${message}`)}\n`);
+	for (const message of args.invalidFlagValues) {
+		write(`${chalk.red(`錯誤: ${localizeError(message)}`)}\n`);
+	}
 	return args.invalidFlagValues.length > 0;
 }
 
@@ -522,8 +526,8 @@ export function reportCliUsageError(
 	write: (text: string) => void = text => process.stderr.write(text),
 ): boolean {
 	if (!(error instanceof CliUsageError)) return false;
-	write(`${chalk.red(`Error: ${error.message}`)}\n`);
-	write(`Run \`${APP_NAME} --help\` for available flags.\n`);
+	write(`${chalk.red(`錯誤: ${localizeError(error.message)}`)}\n`);
+	write(`請執行 \`${APP_NAME} --help\` 檢視可用參數。\n`);
 	return true;
 }
 

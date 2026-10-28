@@ -75,7 +75,10 @@ describe("error-localization (繁體中文錯誤與警示訊息本地化)", () =
 			expect(localizeError("Unknown /skills subcommand: foo")).toBe("未知的 /skills 子指令：foo");
 		});
 
-		it("Usage 使用方式說明", () => {
+		it("Usage 與未知參數說明", () => {
+			expect(localizeError("unknown flag: --unknown-param")).toBe(
+				"未知的參數 (Flag)：--unknown-param",
+			);
 			expect(localizeError("Usage: /move <path>")).toBe("使用方式：/move <path>");
 		});
 	});

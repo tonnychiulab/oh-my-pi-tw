@@ -91,12 +91,20 @@ assert.equal(
 );
 console.log("✔ 測試通過：工具與執行報錯（保留 Bash / Python / Skill）");
 
-// 7. 使用方式 Usage
+// 7. 使用方式 Usage 與參數
+assert.equal(
+	localizeError("unknown flag: --unknown-param"),
+	"未知的參數 (Flag)：--unknown-param"
+);
+assert.equal(
+	localizeError("unknown flags: -a, -b"),
+	"未知的參數 (Flag)：-a, -b"
+);
 assert.equal(
 	localizeError("Usage: /move <path>"),
 	"使用方式：/move <path>"
 );
-console.log("✔ 測試通過：使用說明 Usage 樣板");
+console.log("✔ 測試通過：使用說明 Usage 與參數樣板");
 
 // 8. 安全降級 Fallback
 const unknownMsg = "Custom proprietary extension failure #9872";

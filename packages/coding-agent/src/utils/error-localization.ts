@@ -160,7 +160,11 @@ const PATTERN_RULES: ErrorPattern[] = [
 		replace: (_m) => `未知的 /skills 子指令：${_m[1]}`,
 	},
 
-	// 使用說明 Usage
+	// 使用說明 Usage 與參數
+	{
+		pattern: /^unknown flags?: (.*)$/i,
+		replace: (_m) => `未知的參數 (Flag)：${_m[1]}`,
+	},
 	{
 		pattern: /^Usage: (.*)$/i,
 		replace: (_m) => `使用方式：${_m[1]}`,
