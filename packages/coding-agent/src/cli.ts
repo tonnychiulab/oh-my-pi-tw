@@ -28,6 +28,7 @@ import {
 } from "@oh-my-pi/pi-utils/dirs";
 
 import { declareWorkerHostEntry, installWorkerInbox, isWorkerHostSelector } from "@oh-my-pi/pi-utils/worker-host";
+import { localizeError } from "./utils/error-localization";
 import { extractProfileFlags } from "./cli/profile-bootstrap";
 import {
 	BLOB_BROKER_WORKER_ARG,
@@ -484,7 +485,7 @@ export async function runCli(argv: string[]): Promise<void> {
 		}
 	} catch (error) {
 		const message = error instanceof Error ? error.message : String(error);
-		process.stderr.write(`Error: ${message}\n`);
+		process.stderr.write(`錯誤: ${localizeError(message)}\n`);
 		process.exitCode = 1;
 		return;
 	}
@@ -563,7 +564,7 @@ export async function runCli(argv: string[]): Promise<void> {
 		// Everything else that isn't a known subcommand routes to "launch".
 		const resolved = resolveCliArgv(resolvedArgv);
 		if ("error" in resolved) {
-			process.stderr.write(`error: ${resolved.error}\n`);
+			process.stderr.write(`錯誤: ${localizeError(resolved.error)}\n`);
 			process.exitCode = 1;
 			return;
 		}
