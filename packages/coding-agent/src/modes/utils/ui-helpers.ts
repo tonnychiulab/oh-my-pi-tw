@@ -9,6 +9,7 @@ import { QueuedMessagesBand } from "@oh-my-pi/pi-tui/prompt/queued-messages";
 import { logger } from "@oh-my-pi/pi-utils";
 import type { AdvisorMessageDetails } from "../../advisor";
 import { InternalUrlRouter } from "../../internal-urls";
+import { localizeError, localizeWarning } from "../../utils/error-localization";
 import { COLLAB_PROMPT_MESSAGE_TYPE, type CollabPromptDetails } from "../../collab/protocol";
 import { settings } from "../../config/settings";
 import { createAdvisorMessageCard } from "@oh-my-pi/pi-tui/chat/advisor-message";
@@ -1216,12 +1217,14 @@ export class UiHelpers {
 	}
 
 	showError(errorMessage: string): void {
-		const text = new Text(`Error: ${errorMessage}`, 1, 0).setStyleFn(t => theme.fg("error", t));
+		const localized = localizeError(errorMessage);
+		const text = new Text(`錯誤: ${localized}`, 1, 0).setStyleFn(t => theme.fg("error", t));
 		this.ctx.present([new Spacer(1), text]);
 	}
 
 	showWarning(warningMessage: string, options?: { hideWithToolActivity?: boolean }): void {
-		const text = new Text(`Warning: ${warningMessage}`, 1, 0).setStyleFn(t => theme.fg("warning", t));
+		const localized = localizeWarning(warningMessage);
+		const text = new Text(`警示: ${localized}`, 1, 0).setStyleFn(t => theme.fg("warning", t));
 		const content = [new Spacer(1), text];
 		this.ctx.present(options?.hideWithToolActivity ? new ToolActivityContainer(content) : content);
 	}
