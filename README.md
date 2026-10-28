@@ -26,6 +26,25 @@ The most capable agent surface that ships. Continuously tuned by real-world use 
 
 **60+** providers · **31** built-in tools · **14** lsp ops · **28** dap ops · **~80k** lines of Rust core.
 
+---
+
+## 🇹🇼 繁體中文特裝版亮點 (Traditional Chinese Error Localization)
+
+`oh-my-pi-tw` 提供針對台灣開發者量身打造的**正體中文錯誤檢視體驗**，並嚴格遵循「專業術語（`Worktree`, `AST`, `Token`, `MCP`, `Session`, `Plan`...）與品牌（`Git`, `Bun`, `Claude`, `OpenAI`...）保留不翻」原則，維持與官方上游（`can1357/oh-my-pi`）零衝突的長治久安架構：
+
+<p align="center">
+  <img src="assets/zh-tw-cli-demo.png" width="860" alt="oh-my-pi-tw CLI 正體中文錯誤檢視">
+</p>
+
+<p align="center">
+  <img src="assets/zh-tw-tui-demo.png" width="860" alt="oh-my-pi-tw TUI 互動視窗正體中文錯誤檢視">
+</p>
+
+* **自動化 E2E 測試保障**：隨附 `bash scripts/e2e-zh-tw-test.sh` 一鍵自動化端對端測試。
+* **完整研發手冊**：參閱 [`docs/zh-tw-error-localization.md`](docs/zh-tw-error-localization.md) 了解 Google 大象與金魚技能 (EGM) 與 Gemini 模型的協同規格開發歷程。
+
+---
+
 > [!NOTE]
 > Pull requests are **temporarily open to everyone** as a trial. We previously
 > required a vouch before accepting PRs; that requirement is lifted for now
